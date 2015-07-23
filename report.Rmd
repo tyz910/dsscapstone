@@ -5,6 +5,9 @@ output:
     keep_md: true
 ---
 
+## Synopsis
+
+todo
 
 ## Loading training data
 
@@ -89,4 +92,16 @@ files_stat <- getFileStats()
 files_stat
 ```
 
-Plotting graphs. todo
+Plotting graphs.
+```{r files_stat_graph, cache=TRUE}
+barplot(files_stat[, "Lines"], names.arg = row.names(files_stat), main = "Line counts")
+barplot(files_stat[, "Words"], names.arg = row.names(files_stat), main = "Word counts")
+```
+
+## Bigram and Trigram analysis
+
+todo
+
+## Plans
+
+todo

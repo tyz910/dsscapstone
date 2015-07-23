@@ -1,5 +1,8 @@
 # Data Science Capstone: Milestone Report
 
+## Synopsis
+
+todo
 
 ## Loading training data
 
@@ -104,4 +107,24 @@ files_stat
 ## twitter 2360148     2360148 162096241   134082806 30093410
 ```
 
-Plotting graphs. todo
+Plotting graphs.
+
+```r
+barplot(files_stat[, "Lines"], names.arg = row.names(files_stat), main = "Line counts")
+```
+
+![](report_files/figure-html/files_stat_graph-1.png) 
+
+```r
+barplot(files_stat[, "Words"], names.arg = row.names(files_stat), main = "Word counts")
+```
+
+![](report_files/figure-html/files_stat_graph-2.png) 
+
+## Bigram and Trigram analysis
+
+todo
+
+## Plans
+
+todo

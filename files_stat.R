@@ -19,4 +19,7 @@ getFileStats <- function () {
   return(files_stat)
 }
 
-file_stats <- getFileStats()
+files_stat <- getFileStats()
+
+barplot(files_stat[, "Lines"], names.arg = row.names(files_stat), main = "Line counts")
+barplot(files_stat[, "Words"], names.arg = row.names(files_stat), main = "Word counts")
