@@ -2,11 +2,11 @@
 
 ## Synopsis
 
-todo
+In this report we perform exploratory analysis of the training data for the Courcera Data Science Capstone Project. We evaluate basic summaries of the data such as word and line counts. We build figures and tables to understand distribution of words, variation in the frequencies of words and word pairs in the data.
 
 ## Loading training data
 
-Download Training data from [Courcera site](https://d396qusza40orc.cloudfront.net/dsscapstone/dataset/Coursera-SwiftKey.zip). Files stored in zip archive, unzip it.
+Download training data from [Courcera site](https://d396qusza40orc.cloudfront.net/dsscapstone/dataset/Coursera-SwiftKey.zip). Files stored in zip archive, unzip it.
 
 ```r
 loadData <- function () {
@@ -49,7 +49,7 @@ list.files("./data/final/en_US")
 
 ## Files analysis
 
-We will use english files for analysis. First we read the files.
+We use english files for analysis. First we read the files.
 
 ```r
 readFiles <- function () {
@@ -72,7 +72,7 @@ if (!exists("files")) {
 }
 ```
 
-Calculating word and line counts.
+Calculate word and line counts.
 
 ```r
 library(stringi)
@@ -107,7 +107,7 @@ files_stat
 ## twitter 2360148     2360148 162096241   134082806 30093410
 ```
 
-Plotting graphs.
+Plot graphs.
 
 ```r
 barplot(files_stat[, "Lines"], names.arg = row.names(files_stat), main = "Line counts")
@@ -121,9 +121,11 @@ barplot(files_stat[, "Words"], names.arg = row.names(files_stat), main = "Word c
 
 ![](report_files/figure-html/files_stat_graph-2.png) 
 
+News and blogs data have similar word and lines count. Twitter data have more lines with similar word count - result of Twitter limitation to message size and microblog nature of text.
+
 ## N-gram analysis
 
-For N-gram analysis we create sample set containts 1000 lines from news, 10000 lines from blogs and 50000 lines from twitter.
+For N-gram analysis we create sample set contains 1000 lines from news, 10000 lines from blogs and 50000 lines from twitter.
 
 ```r
 library("tm")
@@ -193,6 +195,8 @@ printNGrams(corpus)
 
 ![](report_files/figure-html/tokens_plot-1.png) ![](report_files/figure-html/tokens_plot-2.png) ![](report_files/figure-html/tokens_plot-3.png) ![](report_files/figure-html/tokens_plot-4.png) 
 
+We found most common words and word pairs in english. This data will be used to make a prediction model.
+
 ## Plans
 
-todo
+Use found n-grams to make a prediction model(possibly Katz's back-off model). Use prediction model to create Shiny app.
