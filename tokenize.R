@@ -35,16 +35,21 @@ getSampleCorpus <- function (blogs = 10000, news = 1000, twitter = 50000, cache 
   return(corpus)
 }
 
-printNGrams <- function (corpus) {
-  delim <- " \\r\\n\\t.!?,;\"()"
-  topN <- 15
-  for (i in 1:4) {
-    label <- paste('Top ', topN, ' ', i, '-grams', sep = '')
-    token <- NGramTokenizer(corpus$content, Weka_control(min = i, max = i, delimiters = delim))
-    top <- as.data.frame(table(token))
-    top <- head(top[order(-top$Freq), ], 15)
-    print(label)
-    print(top)
+printNGram <- function (corpus, n = 1, topN = 15, delim = " \\r\\n\\t.!?,;\"()") {
+  label <- paste('Top ', topN, ' ', n, '-grams', sep = '')
+  token <- NGramTokenizer(corpus$content, Weka_control(min = n, max = n, delimiters = delim))
+  top <- as.data.frame(table(token))
+  top <- head(top[order(-top$Freq), ], topN)
+  
+  par(mar = c(5, 8, 2, 1))
+  barplot(rev(top$Freq), names.arg = rev(top$token), main = label, xlab = "Frequency", horiz = TRUE, las = 1, cex.names = 0.9)
+  
+  return(top)
+}
+
+printNGrams <- function (corpus, num = 4, topN = 15) {
+  for (n in 1:num) { 
+    printNGram(corpus, n, topN)
   }
 }
 
