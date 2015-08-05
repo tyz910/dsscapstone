@@ -1,13 +1,10 @@
 library(shiny)
 
 fluidPage(
-  titlePanel("Prediction"),
+  titlePanel("Word prediction"),
   
-  sidebarPanel(
-    textInput('sentence', 'Text')
-  ),
-
-  mainPanel(
-    textOutput('prediction')
+  fluidRow(
+    column(4, div(br(), wellPanel(textInput('sentence', 'Input text:')))),
+    column(8, h3("Suggestions:"), uiOutput('prediction'))
   )
 )
