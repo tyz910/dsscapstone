@@ -55,11 +55,18 @@ loadChunk <- function (name, chunkNum, minFreq = 1, nNums = 1:4) {
   }
 }
 
-loadChunk ("news", 1, minFreq = 2)
-loadChunk ("twitter", 1, minFreq = 2)
-loadChunk ("blogs", 1, minFreq = 2)
+#loadChunk ("news", 1, minFreq = 2)
+#loadChunk ("twitter", 1, minFreq = 2)
+#loadChunk ("blogs", 1, minFreq = 2)
 
-loadChunk ("twitter", 2, minFreq = 1, nNums = 3:3)
-#loadChunk ("twitter", 3, minFreq = 1, nNums = 3:4)
-#loadChunk ("twitter", 4, minFreq = 1, nNums = 3:4)
+#loadChunk ("twitter", 2, minFreq = 1, nNums = 3:3)
+#loadChunk ("blogs", 2, minFreq = 1, nNums = 3:3)
+#loadChunk ("news", 2, minFreq = 1, nNums = 3:3)
+
+#loadChunk ("twitter", 3, minFreq = 1, nNums = 3:3)
+#loadChunk ("blogs", 3, minFreq = 1, nNums = 3:3)
+#loadChunk ("news", 3, minFreq = 1, nNums = 3:3)
+
+#dbSendQuery(con, "DELETE FROM tokens3 WHERE num < 2")
+#dbSendQuery(con, "VACUUM")
 
